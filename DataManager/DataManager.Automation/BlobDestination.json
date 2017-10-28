@@ -4,7 +4,7 @@
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=lljv1;AccountKey=CSVLFCLSbj6jVUglIfUNIFf7lVck5A8JugrC+vKN0I+dbRvfaA3z4x8RyYR1rzBTZwOgVvXa9kGX+S1h1OKM3w=="
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=textcruncher;AccountKey=CHANGE_ME"
         }
     }
 }

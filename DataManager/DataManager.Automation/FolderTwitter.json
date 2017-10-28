@@ -1,16 +1,15 @@
 ﻿{
     "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.Table.json",
-    "name": "FolderDestination",
+    "name": "FolderTwitter",
     "properties": {
         "type": "AzureBlob",
-        "linkedServiceName": "BlobDestination",
+        "linkedServiceName": "BlobSource",
+        "external": true,
         "structure": [ ],
         "typeProperties": {
-            "folderPath": "training",
-            "fileName": "ScienceAnalyzer1.csv",
+            "folderPath": "training/twitter",
             "format": {
-                "type": "TextFormat",
-                "firstRowAsHeader": true
+                "type": "JsonFormat"
             }
         },
         "availability": {

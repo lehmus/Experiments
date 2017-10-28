@@ -31,8 +31,10 @@
     <Script Include="BlobDestination.json" />
     <Script Include="BlobSource.json" />
     <Script Include="FolderDestination.json" />
+    <Script Include="FolderReddit.json" />
+    <Script Include="FolderWikipedia.json" />
     <Script Include="JsonToCsv.json" />
-    <Script Include="FolderSource.json" />
+    <Script Include="FolderTwitter.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataManager.CustomActivities\DataManager.CustomActivities.csproj">

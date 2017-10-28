@@ -4,9 +4,9 @@
     "properties": {
         "type": "AzureBatch",
         "typeProperties": {
-            "accountName": "lljv1",
-            "accessKey": "O0f2QqASC17fpyn24z5CrZxXZZd6ll8ZYdN4HoAgSdgv/F8u/8HcDcCUvoz2m9PvXtEyydRREvSWek4X7D5tkQ==",
-            "poolName": "csvimport",
+            "accountName": "textcruncher",
+            "accessKey": "CHANGE_ME",
+            "poolName": "JsonToCsv",
             "batchUri": "https://northeurope.batch.azure.com",
             "linkedServiceName": "BlobDestination"
         }
