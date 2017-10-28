@@ -1,0 +1,32 @@
+﻿{
+    "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.Pipeline.json",
+    "name": "JsonToCsv",
+    "properties": {
+        "description": "Copy from JSON blob to CSV blob",
+        "activities": [
+            {
+                "name": "Flatten JSON",
+                "type": "DotNetActivity",
+                "description": "Invoke custom .NET component to convert JSON to CSV.",
+                "linkedServiceName": "AzureBatch",
+                "inputs": [
+                    {
+                        "name": "FolderSource"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "FolderDestination"
+                    }
+                ],
+                "typeProperties": {
+                    "assemblyName": "DataManager.CustomActivities.dll",
+                    "entryPoint": "DataManager.CustomActivities.Activities.JsonToCsv",
+                    "packageLinkedService": "BlobDestination",
+                    "packageFile": "customactivities/DataManager.CustomActivities.zip"
+                }
+            }
+        ],
+        "pipelineMode": "OneTime"
+    }
+}

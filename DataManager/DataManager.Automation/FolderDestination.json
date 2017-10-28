@@ -1,0 +1,21 @@
+﻿{
+    "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.Table.json",
+    "name": "FolderDestination",
+    "properties": {
+        "type": "AzureBlob",
+        "linkedServiceName": "BlobDestination",
+        "structure": [ ],
+        "typeProperties": {
+            "folderPath": "training/reddit",
+            "fileName": "ScienceAnalyzer1.csv",
+            "format": {
+                "type": "TextFormat",
+                "firstRowAsHeader": true
+            }
+        },
+        "availability": {
+            "frequency": "Minute",
+            "interval": 15
+        }
+    }
+}
