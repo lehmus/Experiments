@@ -181,7 +181,7 @@ PublishScripts/
 *.nuget.targets
 
 # Uusi kansio Nuget-paketeille:
-DataManager/.nuget/
+.nuget/
 
 # Microsoft Azure Build Output
 csx/
