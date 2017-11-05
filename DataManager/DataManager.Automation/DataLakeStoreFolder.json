@@ -1,0 +1,41 @@
+﻿{
+    "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.Table.json",
+    "name": "DataLakeStoreFolder",
+  "properties": {
+    "type": "AzureDataLakeStore",
+    "linkedServiceName": "DataLakeStoreLinkedService",
+    "structure": [
+      {
+        "name": "Text",
+        "type": "String"
+      },
+      {
+        "name": "Source",
+        "type": "String"
+      },
+      {
+        "name": "IsScience",
+        "type": "Boolean"
+      },
+      {
+        "name": "IsSport",
+        "type": "Boolean"
+      },
+      {
+        "name": "IsEnvironment",
+        "type": "Boolean"
+      }
+    ],
+    "typeProperties": {
+      "folderPath": "training",
+      "fileName": "ScienceAnalyzer1.json",
+      "format": {
+        "type": "JsonFormat"
+      }
+    },
+    "availability": {
+      "frequency": "Minute",
+      "interval": 15
+    }
+  }
+}

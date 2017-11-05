@@ -30,6 +30,9 @@
     <Script Include="AzureBatch.json" />
     <Script Include="BlobDestination.json" />
     <Script Include="BlobSource.json" />
+    <Script Include="DataLakeImport.json" />
+    <Script Include="DataLakeStoreFolder.json" />
+    <Script Include="DataLakeStoreLinkedService.json" />
     <Script Include="FolderDestination.json" />
     <Script Include="FolderReddit.json" />
     <Script Include="FolderWikipedia.json" />

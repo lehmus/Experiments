@@ -1,0 +1,38 @@
+﻿{
+    "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.Pipeline.json",
+    "name": "DataLakeImport",
+    "properties": {
+      "description": "Copy JSON from Blob to Data Lake",
+      "activities": [
+        {
+          "name": "CopyActivity",
+          "type": "Copy",
+          "inputs": [
+            {
+              "name": "FolderReddit"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "DataLakeStoreFolder"
+            }
+          ],
+          "typeProperties": {
+            "source": {
+              "type": "BlobSource"
+            },
+            "sink": {
+              "type": "AzureDataLakeStoreSink"
+            }
+          },
+          "policy": {
+            "concurrency": 1,
+            "executionPriorityOrder": "OldestFirst",
+            "retry": 3,
+            "timeout": "01:00:00"
+          }
+        }
+    ],
+    "pipelineMode": "OneTime"
+  }
+}

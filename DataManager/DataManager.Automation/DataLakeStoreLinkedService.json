@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "http://datafactories.schema.management.azure.com/schemas/2015-09-01/Microsoft.DataFactory.LinkedService.json",
+  "name": "DataLakeStoreLinkedService",
+  "properties": {
+    "type": "AzureDataLakeStore",
+    "description": "Testing Azure Data Lake",
+    "typeProperties": {
+      "subscriptionId": "be3858c1-5980-47e7-9e91-2791c57e8bff",
+      "resourceGroupName": "DataLakeTest",
+      "accountName": "laurintesti",
+      "dataLakeStoreUri": "https://laurintesti.azuredatalakestore.net/webhdfs/v1",
+      "authorization": "",
+      "sessionId": ""
+    }
+  }
+}
