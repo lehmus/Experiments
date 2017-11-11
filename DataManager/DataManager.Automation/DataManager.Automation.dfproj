@@ -40,11 +40,17 @@
     <Script Include="FolderTwitter.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataManager.CustomActivities\DataManager.CustomActivities.csproj">
+    <ProjectReference Include="..\DataManager.Automation.CustomActivities\DataManager.Automation.CustomActivities.csproj">
       <Name>DataManager.CustomActivities</Name>
       <Project>{1e151f1a-0f9f-43f1-b655-ccfa6975c139}</Project>
       <Private>True</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Name>Microsoft.Build</Name>
+      <AssemblyName>Microsoft.Build.dll</AssemblyName>
+    </Reference>
   </ItemGroup>
   <Import Project="$(AppData)\Microsoft\DataFactory Tools for Visual Studio\MsBuild\1.0\DataFactory.targets" />
 </Project>

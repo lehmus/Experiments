@@ -8,11 +8,9 @@ Project("{3466B219-07DB-46AE-8697-CFD2A1650EC8}") = "DataManager.Automation", "D
 		{1E151F1A-0F9F-43F1-B655-CCFA6975C139} = {1E151F1A-0F9F-43F1-B655-CCFA6975C139}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager.Automation.CustomActivities", "DataManager.CustomActivities\DataManager.Automation.CustomActivities.csproj", "{1E151F1A-0F9F-43F1-B655-CCFA6975C139}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager.Automation.CustomActivities", "DataManager.Automation.CustomActivities\DataManager.Automation.CustomActivities.csproj", "{1E151F1A-0F9F-43F1-B655-CCFA6975C139}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B21EF496-DD16-431F-9452-F71F4DDB9FEE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager.Tests", "UnitTestProject1\DataManager.Tests.csproj", "{6F322340-3AA6-4F19-9DDA-4E91000BF5D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager.Automation.Tests", "DataManager.Automation.Tests\DataManager.Automation.Tests.csproj", "{6F322340-3AA6-4F19-9DDA-4E91000BF5D8}"
 EndProject
 Project("{182E2583-ECAD-465B-BB50-91101D7C24CE}") = "DataManager.Analytics", "DataManager.Analytics\DataManager.Analytics.usqlproj", "{88D7DCAE-4749-43EF-9B82-4377DC8DE068}"
 EndProject

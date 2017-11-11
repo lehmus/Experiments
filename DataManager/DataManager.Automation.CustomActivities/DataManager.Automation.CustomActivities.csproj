@@ -7,8 +7,8 @@
     <ProjectGuid>{1E151F1A-0F9F-43F1-B655-CCFA6975C139}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataManager.CustomActivities</RootNamespace>
-    <AssemblyName>DataManager.CustomActivities</AssemblyName>
+    <RootNamespace>DataManager.Automation.CustomActivities</RootNamespace>
+    <AssemblyName>DataManager.Automation.CustomActivities</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
