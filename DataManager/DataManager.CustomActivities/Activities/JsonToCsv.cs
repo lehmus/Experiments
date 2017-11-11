@@ -74,9 +74,10 @@ namespace DataManager.CustomActivities.Activities
             var textSamples = new List<TextSample>();
             foreach (IListBlobItem listBlobItem in Bresult.Results)
             {
-                if ((listBlobItem is CloudBlockBlob inputBlob) && (inputBlob.Name.IndexOf("$$$.$$$") == -1))
+                CloudBlockBlob inputBlob = listBlobItem as CloudBlockBlob;
+                if ((inputBlob != null) && (inputBlob.Name.IndexOf("$$$.$$$") == -1))
                 {
-                    var blobText = inputBlob.DownloadText( /*Encoding.UTF8, null, null, null*/ );
+                    var blobText = inputBlob.DownloadText();
                     textSamples.Add(JsonConvert.DeserializeObject<TextSample>(blobText));
                 }
             }
@@ -86,12 +87,12 @@ namespace DataManager.CustomActivities.Activities
 
         public string DataMap(List<TextSample> textSamples)
         {
-            var outputCsv = "Source, IsScience, IsSport, IsEnvironmet, Text" + Environment.NewLine;
+            var outputCsv = "Source, IsScience, IsSport, IsEnvironment, Text" + Environment.NewLine;
 
             foreach(var textSample in textSamples)
             {
                 string outputText = String.Join("", textSample.text.Split(',', '.', ';', '\'', '@', '#'));
-                outputCsv += $"{textSample.source} {textSample.isScience} {textSample.isSport} {textSample.isEnvironment} {outputText} {Environment.NewLine}";
+                outputCsv += $"{textSample.source}, {textSample.isScience}, {textSample.isSport}, {textSample.isEnvironment}, {outputText} {Environment.NewLine}";
             }
 
             return outputCsv;
