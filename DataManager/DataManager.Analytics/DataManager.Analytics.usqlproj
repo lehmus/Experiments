@@ -21,9 +21,9 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Script Include="InitialDeployment\CreateDatabase.usql" />
-    <Script Include="InitialDeployment\RegisterAssemblies.usql" />
-    <Script Include="JsonToCsv.usql" />
+    <Compile Include="InitialDeployment\CreateDatabase.usql" />
+    <Compile Include="InitialDeployment\RegisterAssemblies.usql" />
+    <Compile Include="JsonToCsv.usql" />
     <ScriptCode Include="InitialDeployment\CreateDatabase.usql.cs">
       <DependentUpon>InitialDeployment\CreateDatabase.usql</DependentUpon>
     </ScriptCode>
