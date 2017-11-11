@@ -1,0 +1,46 @@
+﻿REFERENCE ASSEMBLY TestDatabase.[Newtonsoft.Json];
+REFERENCE ASSEMBLY TestDatabase.[Microsoft.Analytics.Samples.Formats]; 
+
+USING Microsoft.Analytics.Samples.Formats.Json;
+
+// DECLARE @InputPath string = "/ATMMachineData/RawData/{date:yyyy}/{date:MM}/{filename}.json";
+DECLARE @InputPath string = "/training/ScienceAnalyzer1.json";
+
+// DECLARE @OutputFile string = "/ATMMachineData/StandardizedData/LogCapture.csv";
+DECLARE @OutputFile string = "/trainingcsv/ScienceAnalyzer1.csv";
+
+@RawData = 
+EXTRACT 
+    [text] string,
+    [source] string,
+    // [Timestamp] DateTime,
+    [isSport] bool,
+    [isScience] bool,
+    [isEnvironment] bool
+    // date DateTime, //virtual column
+    // filename string //virtual column 
+FROM @InputPath
+USING new JsonExtractor();
+
+/*
+@CreateJSONTuple = 
+SELECT 
+ [AID] AS AssignedID
+,[Timestamp] AS TimestampUtc
+,JsonFunctions.JsonTuple([Data]) AS EventData 
+FROM @RawData;
+
+@Dataset =
+SELECT
+AssignedID
+,TimestampUtc
+,EventData["Val"] ?? "0" AS DataValue
+,EventData["PrevVal"] ?? "0" AS PreviousDataValue
+,EventData["Descr"] ?? "N/A" AS Description
+FROM @CreateJSONTuple;
+*/
+
+// OUTPUT @Dataset
+OUTPUT @RawData
+TO @OutputFile
+USING Outputters.Csv(outputHeader:true,quoting:true);

@@ -8,11 +8,13 @@ Project("{3466B219-07DB-46AE-8697-CFD2A1650EC8}") = "DataManager.Automation", "D
 		{1E151F1A-0F9F-43F1-B655-CCFA6975C139} = {1E151F1A-0F9F-43F1-B655-CCFA6975C139}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager.CustomActivities", "DataManager.CustomActivities\DataManager.CustomActivities.csproj", "{1E151F1A-0F9F-43F1-B655-CCFA6975C139}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager.Automation.CustomActivities", "DataManager.CustomActivities\DataManager.Automation.CustomActivities.csproj", "{1E151F1A-0F9F-43F1-B655-CCFA6975C139}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B21EF496-DD16-431F-9452-F71F4DDB9FEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager.Tests", "UnitTestProject1\DataManager.Tests.csproj", "{6F322340-3AA6-4F19-9DDA-4E91000BF5D8}"
+EndProject
+Project("{182E2583-ECAD-465B-BB50-91101D7C24CE}") = "DataManager.Analytics", "DataManager.Analytics\DataManager.Analytics.usqlproj", "{88D7DCAE-4749-43EF-9B82-4377DC8DE068}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +68,22 @@ Global
 		{6F322340-3AA6-4F19-9DDA-4E91000BF5D8}.Release|x64.ActiveCfg = Release|Any CPU
 		{6F322340-3AA6-4F19-9DDA-4E91000BF5D8}.Release|x64.Build.0 = Release|Any CPU
 		{6F322340-3AA6-4F19-9DDA-4E91000BF5D8}.Release|x86.ActiveCfg = Release|Any CPU
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Debug|x64.ActiveCfg = Debug|x64
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Debug|x64.Build.0 = Debug|x64
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Debug|x86.ActiveCfg = Debug|x86
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Debug|x86.Build.0 = Debug|x86
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Release|Mixed Platforms.Build.0 = Release|x86
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Release|x64.ActiveCfg = Release|x64
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Release|x64.Build.0 = Release|x64
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Release|x86.ActiveCfg = Release|x86
+		{88D7DCAE-4749-43EF-9B82-4377DC8DE068}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
