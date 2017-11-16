@@ -1,10 +1,13 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Configuration;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using DataFetch.RequestModels;
 
 namespace DataFetch.Requests
@@ -23,7 +26,9 @@ namespace DataFetch.Requests
             string databaseName = "StatFin";
             string subjectRealm = "ene";
             string subjectSubRealm = "ehk";
-            string tableName = "statfin_ehk_pxt_001_fi.px";
+            string tableName = "statfin_ehk_pxt_001_fi";
+            string year = "1970";
+            string blobContainerName = "tilastokeskus";
 
             log.Info("C# HTTP trigger function begins to process a request.");
 
@@ -35,7 +40,7 @@ namespace DataFetch.Requests
                 "/" + databaseName +
                 "/" + subjectRealm +
                 "/" + subjectSubRealm +
-                "/" + tableName,
+                "/" + tableName + ".px",
                 UriKind.Relative
                 );
             var dataFetchUri = new Uri(baseAddress, tablePath);
@@ -47,7 +52,7 @@ namespace DataFetch.Requests
                         selection = new FilterSelection
                         {
                             filter = "item",
-                            values = new string[] { "1970" }
+                            values = new string[] { year }
                         }
                     }
                 },
@@ -57,9 +62,21 @@ namespace DataFetch.Requests
             var dataFetchResponse = await httpClient.PostAsJsonAsync(dataFetchUri, dataFetchRequestBody);
             var dataFetchResponseString = await dataFetchResponse.Content.ReadAsStringAsync();
 
+            string blobFolder = databaseName + "/" + subjectRealm + "/" + subjectSubRealm + "/" + tableName + "/" + resultsLanguage + "/" + year + ".json";
+            WriteToBlob(blobContainerName, blobFolder, dataFetchResponseString);
+
             log.Info("C# HTTP trigger function processed a request successfully.");
-            log.Info("Response content: " + dataFetchResponseString);
             return triggerRequest.CreateResponse(HttpStatusCode.OK);
+        }
+
+        private static void WriteToBlob(string containerName, string folderPath, string fileContent)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["BlobStorage"].ConnectionString;
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference(containerName);
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(folderPath);
+            blockBlob.UploadTextAsync(fileContent);
         }
     }
 }
