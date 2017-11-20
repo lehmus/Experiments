@@ -10,7 +10,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using DataFetch.RequestModels;
 
-namespace DataFetch.Requests
+namespace DataFetch.Functions
 {
     public static class DataFetch
     {

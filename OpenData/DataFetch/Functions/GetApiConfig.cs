@@ -6,7 +6,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Azure.WebJobs.Host;
 
-namespace DataFetch.Requests
+namespace DataFetch.Functions
 {
     public static class GetApiConfig
     {
@@ -23,6 +23,7 @@ namespace DataFetch.Requests
                 "/" + resultsLanguage +
                 "/?config";
 
+            // TODO: käytä HttpClient
             WebRequest dataFetchRequest = WebRequest.Create(dataFetchUrl);
             HttpWebResponse dataFetchResponse = (HttpWebResponse)dataFetchRequest.GetResponse();
             Stream dataStream = dataFetchResponse.GetResponseStream();
