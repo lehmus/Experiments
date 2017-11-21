@@ -156,16 +156,19 @@ namespace DataFetch.Functions
             return String.Empty;
         }
 
+        // TODO: Move this somewhere so that it can be used from other classes as well
         private static string GetStageDirectoryPath(StatFinDatasetMeta blobFolder)
         {
             return "stage/" + blobFolder.Database + "/" + blobFolder.SubjectRealm + "/" + blobFolder.SubjectSubRealm + "/" + blobFolder.TableName + "/" + blobFolder.ResultsLanguage;
         }
 
+        // TODO: Move this somewhere so that it can be used from other classes as well
         private static string GetMasterBlobPathCsv(StatFinDatasetMeta blobFolder)
         {
             return "master/" + blobFolder.Database + "/" + blobFolder.SubjectRealm + "/" + blobFolder.SubjectSubRealm + "/" + blobFolder.ResultsLanguage + "/csv/" + blobFolder.TableName + ".csv";
         }
 
+        // TODO: Move this somewhere so that it can be used from other classes as well
         private static string GetMasterBlobPathJson(StatFinDatasetMeta blobFolder)
         {
             return "master/" + blobFolder.Database + "/" + blobFolder.SubjectRealm + "/" + blobFolder.SubjectSubRealm + "/" + blobFolder.ResultsLanguage + "/json/" + blobFolder.TableName + ".json";
