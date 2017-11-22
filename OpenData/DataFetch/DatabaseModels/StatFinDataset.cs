@@ -15,8 +15,8 @@
     public class StatFinDatasetRaw
     {
         public ColumnDefinition[] columns { get; set; }
+        public ColumnComment[] comments { get; set; }
         public StatFinDataRowRaw[] data { get; set; }
-        public string[] comments { get; set; }
     }
 
     public class ColumnDefinition
@@ -24,13 +24,21 @@
         public string code { get; set; }
         public string text { get; set; }
         public string type { get; set; }
+        public string comment { get; set; }
+    }
+
+    public class ColumnComment
+    {
+        public string variable { get; set; }
+        public string value { get; set; }
+        public string comment { get; set; }
     }
 
     public class StatFinDataRowRaw
     {
         public string[] key { get; set; }
         public string[] values { get; set; }
-        }
+    }
 
     public class StatFinDatasetMeta
     {

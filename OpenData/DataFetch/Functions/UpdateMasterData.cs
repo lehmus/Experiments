@@ -140,7 +140,7 @@ namespace DataFetch.Functions
         private static string ToCsv(StatFinDataset dataset)
         {
             var datasetText = String.Empty;
-            var headerRow = String.Join(", ", dataset.FieldNames) + Environment.NewLine;
+            var headerRow = String.Join(", ", dataset.FieldNames) + ", M‰‰r‰" + Environment.NewLine;
             datasetText += headerRow;
             foreach (var dataRow in dataset.Rows)
             {
