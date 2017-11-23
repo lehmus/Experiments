@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataManager.Automation.CustomActivities\DataManager.Automation.CustomActivities.csproj">
-      <Name>DataManager.CustomActivities</Name>
+      <Name>DataManager.Automation.CustomActivities</Name>
       <Project>{1e151f1a-0f9f-43f1-b655-ccfa6975c139}</Project>
       <Private>True</Private>
     </ProjectReference>

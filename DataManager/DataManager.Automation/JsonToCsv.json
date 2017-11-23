@@ -19,12 +19,12 @@
                         "name": "FolderDestination"
                     }
                 ],
-                "typeProperties": {
-                    "assemblyName": "DataManager.CustomActivities.dll",
-                    "entryPoint": "DataManager.CustomActivities.Activities.JsonToCsv",
-                    "packageLinkedService": "BlobDestination",
-                    "packageFile": "customactivities/DataManager.CustomActivities.zip"
-                }
+              "typeProperties": {
+                "assemblyName": "DataManager.Automation.CustomActivities.dll",
+                "entryPoint": "DataManager.Automation.CustomActivities.Activities.JsonToCsv",
+                "packageLinkedService": "BlobDestination",
+                "packageFile": "customactivities/DataManager.Automation.CustomActivities.zip"
+              }
             }
         ],
         "pipelineMode": "OneTime"
