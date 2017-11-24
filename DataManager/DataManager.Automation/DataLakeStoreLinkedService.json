@@ -5,12 +5,12 @@
     "type": "AzureDataLakeStore",
     "description": "Testing Azure Data Lake",
     "typeProperties": {
-      "subscriptionId": "be3858c1-5980-47e7-9e91-2791c57e8bff",
-      "resourceGroupName": "DataLakeTest",
-      "accountName": "laurintesti",
-      "dataLakeStoreUri": "https://laurintesti.azuredatalakestore.net/webhdfs/v1",
-      "authorization": "",
-      "sessionId": ""
+      "subscriptionId": "CHANGE_THIS",
+      "resourceGroupName": "DataLake",
+      "accountName": "CHANGE_THIS",
+      "dataLakeStoreUri": "https://[CHANGE_THIS].azuredatalakestore.net/webhdfs/v1",
+      "authorization": "https://portal.azure.com/tokenauthorize?code=x&state=x&session_state=x",
+      "sessionId": "autogenerate"
     }
   }
 }

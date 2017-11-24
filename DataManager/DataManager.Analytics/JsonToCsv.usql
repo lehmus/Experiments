@@ -1,5 +1,5 @@
-﻿REFERENCE ASSEMBLY TestDatabase.[Newtonsoft.Json];
-REFERENCE ASSEMBLY TestDatabase.[Microsoft.Analytics.Samples.Formats]; 
+﻿REFERENCE ASSEMBLY Training.[Newtonsoft.Json];
+REFERENCE ASSEMBLY Training.[Microsoft.Analytics.Samples.Formats]; 
 
 USING Microsoft.Analytics.Samples.Formats.Json;
 

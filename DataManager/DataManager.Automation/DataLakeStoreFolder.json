@@ -27,7 +27,7 @@
       }
     ],
     "typeProperties": {
-      "folderPath": "training",
+      "folderPath": "source",
       "fileName": "ScienceAnalyzer1.json",
       "format": {
         "type": "JsonFormat"

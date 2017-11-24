@@ -3,8 +3,8 @@
     "name": "BlobDestination",
     "properties": {
         "type": "AzureStorage",
-        "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=textcruncher;AccountKey=CHANGE_ME"
-        }
+      "typeProperties": {
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=CHANGE_THIS;AccountKey=CHANGE_THIS"
+      }
     }
 }
