@@ -6,7 +6,7 @@
     "description": "Testing Azure Data Lake",
     "typeProperties": {
       "subscriptionId": "CHANGE_THIS",
-      "resourceGroupName": "DataLake",
+      "resourceGroupName": "CHANGE_THIS",
       "accountName": "CHANGE_THIS",
       "dataLakeStoreUri": "https://[CHANGE_THIS].azuredatalakestore.net/webhdfs/v1",
       "authorization": "https://portal.azure.com/tokenauthorize?code=x&state=x&session_state=x",
