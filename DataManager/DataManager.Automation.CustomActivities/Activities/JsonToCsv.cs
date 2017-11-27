@@ -6,12 +6,17 @@ using Microsoft.Azure.Management.DataFactories.Runtime;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
-using DataManager.CustomActivities.Models;
+using DataManager.Automation.CustomActivities.Models;
 
-namespace DataManager.CustomActivities.Activities
+namespace DataManager.Automation.CustomActivities.Activities
 {
     public class JsonToCsv : IDotNetActivity
     {
+        // Define the dataset table names
+        private const string InputTableReddit = "FolderReddit";
+        // TODO: Add more inputs
+        // private static readonly string[] InputTables = { "FolderReddit", "FolderWikipedia", "FolderTwitter" };
+        private const string OutputTable = "FolderDestination";
 
         public IDictionary<string, string> Execute(
             IEnumerable<LinkedService> linkedServices,
@@ -19,12 +24,21 @@ namespace DataManager.CustomActivities.Activities
             Activity activity,
             IActivityLogger logger)
         {
-            var inputName = "FolderReddit";
-            var outputName = "FolderDestination";
 
-            var jsonDatas = readDataFromBlobs(datasets, linkedServices, activity, logger, inputName);
+            var datasetsByName = datasets.ToDictionary(dataset => dataset.Name);
+            var linkedServicesByName = linkedServices.ToDictionary(linkedService => linkedService.Name);
+
+            var inputDataset = datasetsByName[InputTableReddit];
+            var inputLinkedService = linkedServicesByName[inputDataset.Properties.LinkedServiceName];
+            var inputLinkedServiceStorage = (AzureStorageLinkedService)inputLinkedService.Properties.TypeProperties;
+            var jsonDatas = ReadDataFromBlobs(inputDataset, inputLinkedServiceStorage, logger);
+
+            var outputDataset = datasetsByName[OutputTable];
+            var outputLinkedService = linkedServicesByName[outputDataset.Properties.LinkedServiceName];
+            var outputLinkedServiceStorage = (AzureStorageLinkedService)outputLinkedService.Properties.TypeProperties;
+
             var outputCsv = DataMap(jsonDatas);
-            writeDataToBlob(datasets, linkedServices, activity, logger, outputCsv, outputName);
+            WriteDataToBlob(outputDataset, outputLinkedServiceStorage, logger, outputCsv);
 
             // The dictionary can be used to chain custom activities together in the future.
             // This feature is not implemented yet, so just return an empty dictionary.  
@@ -98,20 +112,18 @@ namespace DataManager.CustomActivities.Activities
             return outputCsv;
         }
 
-        List<TextSample> readDataFromBlobs(IEnumerable<Dataset> datasets, IEnumerable<LinkedService> linkedServices, Activity activity, IActivityLogger logger, string inputName)
+        private static List<TextSample> ReadDataFromBlobs(
+            Dataset inputDataset,
+            AzureStorageLinkedService inputLinkedService,
+            IActivityLogger logger
+            )
         {
             var result = new List<TextSample>();
-            Dataset inputDataset = datasets.Single(dataset => dataset.Name == inputName);
-            string folderPath = GetFolderPath(inputDataset);
-            AzureStorageLinkedService inputLinkedService = linkedServices.Single(
-                    linkedService =>
-                    linkedService.Name == inputDataset.Properties.LinkedServiceName
-                ).Properties.TypeProperties
-                as AzureStorageLinkedService;
+            var folderPath = GetFolderPath(inputDataset);
 
-            string inputConnectionString = inputLinkedService.ConnectionString;
-            CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(inputConnectionString);
-            CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
+            var inputConnectionString = inputLinkedService.ConnectionString;
+            var inputStorageAccount = CloudStorageAccount.Parse(inputConnectionString);
+            var inputClient = inputStorageAccount.CreateCloudBlobClient();
 
             BlobContinuationToken continuationToken = null;
             do
@@ -130,22 +142,21 @@ namespace DataManager.CustomActivities.Activities
             return result;
         }
 
-        void writeDataToBlob(IEnumerable<Dataset> datasets, IEnumerable<LinkedService> linkedServices, Activity activity, IActivityLogger logger, string csvData, string outputName)
+        private static void WriteDataToBlob(
+            Dataset outputDataset,
+            AzureStorageLinkedService outputLinkedService,
+            IActivityLogger logger,
+            string csvData
+            )
         {
-            Dataset outputDataset = datasets.Single(dataset => dataset.Name == outputName);
             var folderPath = GetFolderPath(outputDataset);
-            AzureStorageLinkedService outputLinkedService = linkedServices.Single(
-                    linkedService =>
-                    linkedService.Name == outputDataset.Properties.LinkedServiceName
-                ).Properties.TypeProperties
-                as AzureStorageLinkedService;
 
             // create a storage object for the output blob.
-            string outputConnectionString = outputLinkedService.ConnectionString;
-            CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(outputConnectionString);
-            Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
+            var outputConnectionString = outputLinkedService.ConnectionString;
+            var outputStorageAccount = CloudStorageAccount.Parse(outputConnectionString);
+            var outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
 
-            CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
+            var outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
             outputBlob.UploadText(csvData);
         }
     }

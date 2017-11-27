@@ -1,4 +1,4 @@
-﻿namespace DataManager.CustomActivities.Models
+﻿namespace DataManager.Automation.CustomActivities.Models
 {
     public class TextSample
     {

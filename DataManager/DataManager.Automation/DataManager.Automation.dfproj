@@ -7,7 +7,7 @@
     <OutputType>File</OutputType>
     <AssemblyName>DataFactory</AssemblyName>
     <ApiVersion>2015-09-01</ApiVersion>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Name>DataManager.Automation</Name>
     <RootNamespace>DataManager</RootNamespace>
   </PropertyGroup>
