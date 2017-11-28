@@ -28,7 +28,6 @@
     ],
     "typeProperties": {
       "folderPath": "source",
-      "fileName": "ScienceAnalyzer1.json",
       "format": {
         "type": "JsonFormat"
       }

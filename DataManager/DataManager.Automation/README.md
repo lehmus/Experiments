@@ -2,6 +2,22 @@
 
 Azure Data Factory project. Currently using ADF V1 (Visual Studio does not have support for V2 Preview).
 
+## Pipeline JsonToCsv
+
+- Type: Custom .NET Activity (C#)
+- Input: Blob Storage folders (multiple inputs, as configured in the Activity)
+- Output: Blob Storage (separate folder, possibly in a different Storage Account)
+
+Reads JSON files from Blob folders, converts to CSV format and saves the results to a Blob folder
+
+## Pipeline **DataLakeImport**
+
+- Type: Copy Activity
+- Input: Blob Storage
+- Output: Data Lake Store
+
+Copies data from a Blob Storage folder tia
+
 Data Lake Linked Service uses User Credential Authentication (Service Principal Authentication is recommended, but it requires Azure AD).
 When deploying from Visual Studio, publish the ADL Store Linked Service separately.
 Publish generates an error in Visual Studio, but the Linked Service is generated anyway.
